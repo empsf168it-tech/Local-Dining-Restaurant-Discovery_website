@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="savoriaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#722F37"/>
+      <stop offset="100%" stop-color="#C85A32"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="url(#savoriaGrad)"/>
+  <!-- Cloche / Dining Discovery Icon -->
+  <path d="M32 16a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm16 22a16 16 0 0 0-32 0h32zm2 2H14a1.5 1.5 0 0 0 0 3h36a1.5 1.5 0 0 0 0-3zm-18 6a2 2 0 1 0 0 4 2 2 0 0 0 0-4z" fill="#FAF6F0"/>
+  <circle cx="32" cy="14" r="3" fill="#C5A059"/>
+</svg>

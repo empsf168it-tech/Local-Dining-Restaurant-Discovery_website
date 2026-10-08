@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Restaurants & Dining Guide — Savoria Local Discovery</title>
+  <meta name="description" content="Discover curated local restaurants, intimate bistros, chef tables, and hidden foodie spots near you on Savoria. Filter by cuisine, dietary options, and ratings.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  
+  <!-- Bootstrap 5 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- ================================================================
+       HEADER & NAVIGATION
+       ================================================================ -->
+  <header class="crave-header">
+    <div class="container">
+      <nav class="crave-navbar">
+        <!-- Logo -->
+        <a href="index.html" class="brand-logo">
+          <div class="logo-icon">
+            <i class="bi bi-compass-fill"></i>
+          </div>
+          <span>Savor<span class="accent">ia</span></span>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <ul class="crave-nav-links crave-nav-links-desktop">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="restaurants.html" class="active">Restaurants</a></li>
+          <li><a href="food-details.html">Food Details</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+
+        <!-- Right Header Actions -->
+        <div class="header-actions">
+          <button class="cart-icon-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#cartOffcanvas" aria-label="View Tasting Bag">
+            <i class="bi bi-bag-heart-fill"></i>
+            <span class="cart-badge">2</span>
+          </button>
+
+          <a href="restaurants.html" class="btn-crave-primary d-none d-lg-inline-flex">
+            <span>Explore Dining</span>
+            <i class="bi bi-arrow-right-short fs-5"></i>
+          </a>
+
+          <!-- Mobile Hamburger Toggle (Right Aligned) -->
+          <button class="mobile-toggle-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileNavOffcanvas" aria-label="Toggle Navigation">
+            <i class="bi bi-list"></i>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Offcanvas Drawer -->
+  <div class="offcanvas offcanvas-end mobile-nav-offcanvas" tabindex="-1" id="mobileNavOffcanvas">
+    <div class="offcanvas-header border-bottom">
+      <div class="brand-logo">
+        <div class="logo-icon"><i class="bi bi-compass-fill"></i></div>
+        <span>Savor<span class="accent">ia</span></span>
+      </div>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body d-flex flex-column justify-content-between">
+      <div>
+        <ul class="mobile-nav-list">
+          <li><a href="index.html"><span>Home</span> <i class="bi bi-chevron-right"></i></a></li>
+          <li><a href="about.html"><span>About Us & Our Mission</span> <i class="bi bi-chevron-right"></i></a></li>
+          <li><a href="restaurants.html" class="active"><span>Restaurants</span> <i class="bi bi-chevron-right"></i></a></li>
+          <li><a href="food-details.html"><span>Food Details & Tasting</span> <i class="bi bi-chevron-right"></i></a></li>
+          <li><a href="contact.html"><span>Contact & Concierge Desk</span> <i class="bi bi-chevron-right"></i></a></li>
+        </ul>
+      </div>
+      <div class="pt-3 border-top">
+        <a href="restaurants.html" class="btn-crave-primary w-100 text-center">Discover Restaurants</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide-in Cart / Tasting Offcanvas Drawer -->
+  <div class="offcanvas offcanvas-end cart-offcanvas" tabindex="-1" id="cartOffcanvas">
+    <div class="offcanvas-header border-bottom">
+      <h5 class="offcanvas-title fw-bold"><i class="bi bi-bookmark-star-fill text-warning me-2"></i> Your Tasting Selection</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body d-flex flex-column justify-content-between">
+      <div id="cartItemsContainer"></div>
+      <div class="cart-summary-box">
+        <div class="summary-row">
+          <span class="text-muted">Tasting Subtotal</span>
+          <span class="fw-bold" id="cartSubtotal">₹1,370</span>
+        </div>
+        <div class="summary-row">
+          <span class="text-muted">Table Service & Booking</span>
+          <span class="fw-bold text-success" id="cartDeliveryFee">COMPLIMENTARY</span>
+        </div>
+        <div class="summary-row">
+          <span class="text-muted">Hospitality & Taxes</span>
+          <span class="fw-bold">₹68</span>
+        </div>
+        <div class="summary-row text-success">
+          <span>Epicure Club Voucher (SAVORFIRST)</span>
+          <span class="fw-bold">-₹100</span>
+        </div>
+        <div class="summary-row total">
+          <span>Estimated Total</span>
+          <span style="color:var(--primary);" id="cartTotal">₹1,338</span>
+        </div>
+        <a href="food-details.html" class="btn-crave-primary w-100 mt-3 text-center">
+          <span>Proceed to Experience</span>
+          <i class="bi bi-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================================
+       RESTAURANTS HERO & SEARCH FILTER SECTION
+       ================================================================ -->
+  <section class="hero-wrapper page-hero-wrapper pb-4">
+    <div class="container">
+      <div class="row align-items-center mb-5">
+        <!-- Left Content -->
+        <div class="col-lg-6 mb-4 mb-lg-0 hero-content-box">
+          <span class="badge-crave mb-3">
+            <i class="bi bi-shop"></i> 350+ Curated Dining Destinations
+          </span>
+          <h1 class="page-hero-title">Find Your Next <br><span style="color:var(--primary);">Dining Destination.</span></h1>
+          <p class="hero-subtitle mb-4">
+            Explore curated tasting menus, historic wine cellars, and atmosphere guides from acclaimed local restaurants, garden bistros, and master chefs.
+          </p>
+          <div class="d-flex flex-wrap gap-3 align-items-center">
+            <div class="d-flex align-items-center gap-2">
+              <i class="bi bi-patch-check-fill text-warning fs-5"></i>
+              <span class="fw-bold">4.9★ Gastronomy Vetted</span>
+            </div>
+            <span class="text-muted">•</span>
+            <div class="d-flex align-items-center gap-2">
+              <i class="bi bi-bookmark-star-fill text-danger fs-5"></i>
+              <span class="fw-bold">Verified Table Booking</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Hero Visual -->
+        <div class="col-lg-6 hero-visual-container">
+          <div class="hero-main-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&auto=format&fit=crop&q=80" alt="Curated Dining Spread" class="hero-main-img" style="height:360px;">
+          </div>
+
+          <!-- Floating Badge 1 -->
+          <div class="floating-card floating-card-1">
+            <div class="float-icon yellow">
+              <i class="bi bi-star-fill"></i>
+            </div>
+            <div class="float-text">
+              <h5>350+ Spots</h5>
+              <p>Top Rated Dining</p>
+            </div>
+          </div>
+
+          <!-- Floating Badge 2 -->
+          <div class="floating-card floating-card-2">
+            <div class="float-icon orange">
+              <i class="bi bi-geo-alt-fill"></i>
+            </div>
+            <div class="float-text">
+              <h5>15 Cities</h5>
+              <p>Epicurean Network</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Search & Filter Controls Card -->
+      <div class="bg-white p-4 rounded-4 shadow-sm border">
+        <div class="row g-3 align-items-center">
+          <!-- Live Search Bar -->
+          <div class="col-lg-7">
+            <div class="input-group">
+              <span class="input-group-text bg-transparent border-end-0 ps-3">
+                <i class="bi bi-search fs-5" style="color:var(--primary);"></i>
+              </span>
+              <input type="text" id="restaurantSearchInput" class="form-control border-start-0 py-2" placeholder="Search dining spots, cuisines, chefs or dishes...">
+            </div>
+          </div>
+
+          <!-- Cuisine Dropdown Filter -->
+          <div class="col-lg-5">
+            <div class="d-flex align-items-center gap-2">
+              <span class="fw-bold text-nowrap d-none d-sm-inline" style="font-size:0.9rem;">Cuisine:</span>
+              <select id="cuisineSelect" class="form-select py-2">
+                <option value="all">All Cuisines &amp; Styles</option>
+                <option value="european">European &amp; Contemporary</option>
+                <option value="italian">Italian &amp; Trattorias</option>
+                <option value="japanese">Japanese &amp; Omakase</option>
+                <option value="french">French Nouvelle</option>
+                <option value="heritage">Heritage Indian</option>
+                <option value="farm">Farm-to-Table Organic</option>
+                <option value="bakery">Artisan Bakery &amp; Café</option>
+                <option value="tapas">Spanish &amp; Tapas</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Filter Pill Chips -->
+        <div class="d-flex flex-wrap gap-2 mt-4 pt-3 border-top">
+          <button class="btn btn-crave-primary filter-pill-btn active" data-filter="all">All Spots</button>
+          <button class="btn btn-crave-secondary filter-pill-btn" data-filter="veg"><span class="veg-indicator"></span> Farm &amp; Vegetarian</button>
+          <button class="btn btn-crave-secondary filter-pill-btn" data-filter="fast"><i class="bi bi-cup-hot text-warning"></i> Casual Bistros</button>
+          <button class="btn btn-crave-secondary filter-pill-btn" data-filter="top"><i class="bi bi-star-fill text-warning"></i> Top Rated (4.8+)</button>
+          <button class="btn btn-crave-secondary filter-pill-btn" data-filter="free"><i class="bi bi-patch-check text-success"></i> Valet &amp; Patio</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       RESTAURANTS GRID
+       ================================================================ -->
+  <section class="section-padding pt-2">
+    <div class="container">
+      <div class="row g-4" id="restaurantGridContainer">
+        
+        <!-- Spot 1: The Copper Hearth -->
+        <div class="col-md-6 col-lg-4 restaurant-grid-col">
+          <div class="restaurant-card" data-name="The Copper Hearth" data-cuisine="European Contemporary Grill Truffles" data-veg="false" data-fast="false" data-rating="4.9" data-freedelivery="true">
+            <div class="restaurant-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=700&auto=format&fit=crop&q=80" alt="The Copper Hearth" class="restaurant-img">
+              <span class="card-top-tag">CHEF'S TABLE</span>
+              <span class="card-time-tag"><i class="bi bi-geo-alt"></i> Arts District • 1.2 km</span>
+            </div>
+            <div class="restaurant-body">
+              <div>
+                <div class="restaurant-header">
+                  <h3 class="restaurant-name">The Copper Hearth</h3>
+                  <span class="rating-badge"><i class="bi bi-star-fill"></i> 4.9</span>
+                </div>
+                <p class="restaurant-cuisine">Contemporary European • Woodfired Grill • Truffles</p>
+              </div>
+              <div>
+                <div class="restaurant-meta">
+                  <span><span class="non-veg-indicator"></span>₹1,200 for two</span>
+                  <span class="text-success fw-bold">Patio &amp; Valet</span>
+                </div>
+                <a href="food-details.html" class="btn-crave-primary w-100 mt-3 text-center">View Menu &amp; Reserve</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Spot 2: Trattoria Bella Vista -->
+        <div class="col-md-6 col-lg-4 restaurant-grid-col">
+          <div class="restaurant-card" data-name="Trattoria Bella Vista" data-cuisine="Italian Pasta Pizza Risotto" data-veg="true" data-fast="true" data-rating="4.8" data-freedelivery="true">
+            <div class="restaurant-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=700&auto=format&fit=crop&q=80" alt="Trattoria Bella Vista" class="restaurant-img">
+              <span class="card-top-tag" style="background:var(--secondary);">ROMANTIC AMBIANCE</span>
+              <span class="card-time-tag"><i class="bi bi-geo-alt"></i> Old Quarter • 2.0 km</span>
+            </div>
+            <div class="restaurant-body">
+              <div>
+                <div class="restaurant-header">
+                  <h3 class="restaurant-name">Trattoria Bella Vista</h3>
+                  <span class="rating-badge"><i class="bi bi-star-fill"></i> 4.8</span>
+                </div>
+                <p class="restaurant-cuisine">Italian • Handcrafted Pasta • Woodfired Pizza</p>
+              </div>
+              <div>
+                <div class="restaurant-meta">
+                  <span><span class="veg-indicator"></span>₹950 for two</span>
+                  <span class="text-success fw-bold">Wine Cellar</span>
+                </div>
+                <a href="food-details.html" class="btn-crave-primary w-100 mt-3 text-center">View Menu &amp; Reserve</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Spot 3: Sakura Omakase & Robata -->
+        <div class="col-md-6 col-lg-4 restaurant-grid-col">
+          <div class="restaurant-card" data-name="Sakura Omakase" data-cuisine="Japanese Asian Sushi Ramen Omakase" data-veg="false" data-fast="false" data-rating="4.9" data-freedelivery="false">
+            <div class="restaurant-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1579027989536-b7b1f875659b?w=700&auto=format&fit=crop&q=80" alt="Sakura Omakase & Robata" class="restaurant-img">
+              <span class="card-top-tag">MICHELIN GUIDE</span>
+              <span class="card-time-tag"><i class="bi bi-geo-alt"></i> Financial District • 0.8 km</span>
+            </div>
+            <div class="restaurant-body">
+              <div>
+                <div class="restaurant-header">
+                  <h3 class="restaurant-name">Sakura Omakase &amp; Robata</h3>
+                  <span class="rating-badge"><i class="bi bi-star-fill"></i> 4.9</span>
+                </div>
+                <p class="restaurant-cuisine">Japanese • Omakase Sushi • Robata Grill</p>
+              </div>
+              <div>
+                <div class="restaurant-meta">
+                  <span><span class="non-veg-indicator"></span>₹1,800 for two</span>
+                  <span class="text-muted">Tasting Pairing</span>
+                </div>
+                <a href="food-details.html" class="btn-crave-primary w-100 mt-3 text-center">View Menu &amp; Reserve</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Spot 4: L'Aura Modern Bistro -->
+        <div class="col-md-6 col-lg-4 restaurant-grid-col">
+          <div class="restaurant-card" data-name="L'Aura Modern Bistro" data-cuisine="French Bistro Duck Confit Wine" data-veg="false" data-fast="false" data-rating="4.8" data-freedelivery="true">
+            <div class="restaurant-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?w=700&auto=format&fit=crop&q=80" alt="L'Aura Modern Bistro" class="restaurant-img">
+              <span class="card-top-tag">POPULAR BISTRO</span>
+              <span class="card-time-tag"><i class="bi bi-geo-alt"></i> Heritage Boulevard • 1.5 km</span>
+            </div>
+            <div class="restaurant-body">
+              <div>
+                <div class="restaurant-header">
+                  <h3 class="restaurant-name">L'Aura Modern Bistro</h3>
+                  <span class="rating-badge"><i class="bi bi-star-fill"></i> 4.8</span>
+                </div>
+                <p class="restaurant-cuisine">French Nouvelle • Sommelier Cellar • Duck Confit</p>
+              </div>
+              <div>
+                <div class="restaurant-meta">
+                  <span><span class="non-veg-indicator"></span>₹1,400 for two</span>
+                  <span class="text-success fw-bold">Live Jazz</span>
+                </div>
+                <a href="food-details.html" class="btn-crave-primary w-100 mt-3 text-center">View Menu &amp; Reserve</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Spot 5: The Green Botanist -->
+        <div class="col-md-6 col-lg-4 restaurant-grid-col">
+          <div class="restaurant-card" data-name="The Green Botanist" data-cuisine="Healthy Farm-to-Table Salads Organic" data-veg="true" data-fast="true" data-rating="4.8" data-freedelivery="true">
+            <div class="restaurant-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=700&auto=format&fit=crop&q=80" alt="The Green Botanist" class="restaurant-img">
+              <span class="card-top-tag" style="background:#27AE60;">FARM-TO-TABLE</span>
+              <span class="card-time-tag"><i class="bi bi-geo-alt"></i> Green Meadows • 3.1 km</span>
+            </div>
+            <div class="restaurant-body">
+              <div>
+                <div class="restaurant-header">
+                  <h3 class="restaurant-name">The Green Botanist</h3>
+                  <span class="rating-badge"><i class="bi bi-star-fill"></i> 4.8</span>
+                </div>
+                <p class="restaurant-cuisine">Organic • Botanical Bowls • Cold-Pressed Spritz</p>
+              </div>
+              <div>
+                <div class="restaurant-meta">
+                  <span><span class="veg-indicator"></span>₹800 for two</span>
+                  <span class="text-success fw-bold">Garden Dining</span>
+                </div>
+                <a href="food-details.html" class="btn-crave-primary w-100 mt-3 text-center">View Menu &amp; Reserve</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Spot 6: Maison Éclat Patisserie -->
+        <div class="col-md-6 col-lg-4 restaurant-grid-col">
+          <div class="restaurant-card" data-name="Maison Éclat Patisserie" data-cuisine="Desserts Bakery Pastries Coffee" data-veg="true" data-fast="true" data-rating="4.9" data-freedelivery="false">
+            <div class="restaurant-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=700&auto=format&fit=crop&q=80" alt="Maison Éclat Patisserie" class="restaurant-img">
+              <span class="card-top-tag">ARTISAN BAKERY</span>
+              <span class="card-time-tag"><i class="bi bi-geo-alt"></i> Royal Arcade • 0.5 km</span>
+            </div>
+            <div class="restaurant-body">
+              <div>
+                <div class="restaurant-header">
+                  <h3 class="restaurant-name">Maison Éclat Patisserie</h3>
+                  <span class="rating-badge"><i class="bi bi-star-fill"></i> 4.9</span>
+                </div>
+                <p class="restaurant-cuisine">Pastries • Viennoiserie • Single-Origin Brews</p>
+              </div>
+              <div>
+                <div class="restaurant-meta">
+                  <span><span class="veg-indicator"></span>₹600 for two</span>
+                  <span class="text-success fw-bold">High Tea</span>
+                </div>
+                <a href="food-details.html" class="btn-crave-primary w-100 mt-3 text-center">View Menu &amp; Reserve</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Spot 7: Casa Cantina Tapas -->
+        <div class="col-md-6 col-lg-4 restaurant-grid-col">
+          <div class="restaurant-card" data-name="Casa Cantina Tapas" data-cuisine="Mexican Spanish Tapas Tacos Sangria" data-veg="false" data-fast="true" data-rating="4.7" data-freedelivery="true">
+            <div class="restaurant-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=700&auto=format&fit=crop&q=80" alt="Casa Cantina Tapas" class="restaurant-img">
+              <span class="card-top-tag">TAPAS &amp; SANGRIA</span>
+              <span class="card-time-tag"><i class="bi bi-geo-alt"></i> Sunset Strip • 1.9 km</span>
+            </div>
+            <div class="restaurant-body">
+              <div>
+                <div class="restaurant-header">
+                  <h3 class="restaurant-name">Casa Cantina Tapas</h3>
+                  <span class="rating-badge"><i class="bi bi-star-fill"></i> 4.7</span>
+                </div>
+                <p class="restaurant-cuisine">Spanish &amp; Mexican • Artisan Tapas • Sangria Lounge</p>
+              </div>
+              <div>
+                <div class="restaurant-meta">
+                  <span><span class="non-veg-indicator"></span>₹850 for two</span>
+                  <span class="text-success fw-bold">Rooftop Seating</span>
+                </div>
+                <a href="food-details.html" class="btn-crave-primary w-100 mt-3 text-center">View Menu &amp; Reserve</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Spot 8: Imperial Silk Road -->
+        <div class="col-md-6 col-lg-4 restaurant-grid-col">
+          <div class="restaurant-card" data-name="Imperial Silk Road" data-cuisine="Chinese Asian Dim Sum Dumplings" data-veg="false" data-fast="false" data-rating="4.8" data-freedelivery="false">
+            <div class="restaurant-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1585032226651-759b368d7246?w=700&auto=format&fit=crop&q=80" alt="Imperial Silk Road Kitchen" class="restaurant-img">
+              <span class="card-top-tag">CHEF SELECTION</span>
+              <span class="card-time-tag"><i class="bi bi-geo-alt"></i> Lantern Lane • 2.4 km</span>
+            </div>
+            <div class="restaurant-body">
+              <div>
+                <div class="restaurant-header">
+                  <h3 class="restaurant-name">Imperial Silk Road</h3>
+                  <span class="rating-badge"><i class="bi bi-star-fill"></i> 4.8</span>
+                </div>
+                <p class="restaurant-cuisine">Contemporary Asian • Artisan Dim Sum • Peking Duck</p>
+              </div>
+              <div>
+                <div class="restaurant-meta">
+                  <span><span class="non-veg-indicator"></span>₹1,300 for two</span>
+                  <span class="text-muted">Private Dining</span>
+                </div>
+                <a href="food-details.html" class="btn-crave-primary w-100 mt-3 text-center">View Menu &amp; Reserve</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Spot 9: Royal Saffron Heritage -->
+        <div class="col-md-6 col-lg-4 restaurant-grid-col">
+          <div class="restaurant-card" data-name="Royal Saffron Heritage" data-cuisine="Heritage Indian Mughlai Biryani Tandoor" data-veg="false" data-fast="false" data-rating="4.9" data-freedelivery="true">
+            <div class="restaurant-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1589302168068-964664d93dc0?w=700&auto=format&fit=crop&q=80" alt="Royal Saffron Heritage" class="restaurant-img">
+              <span class="card-top-tag">HERITAGE CLASSIC</span>
+              <span class="card-time-tag"><i class="bi bi-geo-alt"></i> Palace Quarter • 1.7 km</span>
+            </div>
+            <div class="restaurant-body">
+              <div>
+                <div class="restaurant-header">
+                  <h3 class="restaurant-name">Royal Saffron Heritage</h3>
+                  <span class="rating-badge"><i class="bi bi-star-fill"></i> 4.9</span>
+                </div>
+                <p class="restaurant-cuisine">Heritage Indian • Awadhi Dum Biryani • Royal Tandoor</p>
+              </div>
+              <div>
+                <div class="restaurant-meta">
+                  <span><span class="non-veg-indicator"></span>₹1,100 for two</span>
+                  <span class="text-success fw-bold">Courtyard Live Music</span>
+                </div>
+                <a href="food-details.html" class="btn-crave-primary w-100 mt-3 text-center">View Menu &amp; Reserve</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       FOOTER
+       ================================================================ -->
+  <footer class="crave-footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4 mb-4 mb-lg-0">
+          <a href="index.html" class="brand-logo text-white mb-3 d-inline-flex">
+            <div class="logo-icon"><i class="bi bi-compass-fill"></i></div>
+            <span class="text-white">Savor<span class="accent">ia</span></span>
+          </a>
+          <p class="mb-4">
+            Your Premier Local Dining &amp; Restaurant Discovery Guide. Connecting food enthusiasts with extraordinary culinary artistry, memorable dining spaces, and passionate neighborhood chefs.
+          </p>
+          <div class="social-links">
+            <a href="https://instagram.com" target="_blank" class="social-icon"><i class="bi bi-instagram"></i></a>
+            <a href="https://facebook.com" target="_blank" class="social-icon"><i class="bi bi-facebook"></i></a>
+            <a href="https://twitter.com" target="_blank" class="social-icon"><i class="bi bi-twitter-x"></i></a>
+            <a href="https://youtube.com" target="_blank" class="social-icon"><i class="bi bi-youtube"></i></a>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-3 col-lg-2">
+          <h5>Navigation</h5>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="restaurants.html">Restaurants</a></li>
+            <li><a href="food-details.html">Food Details</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-md-3 col-lg-3">
+          <h5>Dining Concierge</h5>
+          <ul class="footer-links">
+            <li><a href="contact.html#ticketSection">Submit Inquiry</a></li>
+            <li><a href="contact.html#activeTicketSection">Inquiry Tracker</a></li>
+            <li><a href="contact.html#contactMapSection">Concierge HQ</a></li>
+            <li><a href="contact.html#faqSection">Gastronomy FAQs</a></li>
+          </ul>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+          <h5>Epicurean Gazette</h5>
+          <p class="small">Subscribe for secret supper club invitations &amp; chef release guides.</p>
+          <form class="footer-newsletter newsletter-form">
+            <input type="email" placeholder="Enter your email" required>
+            <button type="submit" class="btn btn-crave-primary"><i class="bi bi-send-fill"></i></button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="mb-0">&copy; 2026 Savoria Epicurean Network Inc. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button type="button" id="backToTopBtn" class="back-to-top-btn" aria-label="Back to Top">
+    <i class="bi bi-arrow-up"></i>
+  </button>
+
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JS -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

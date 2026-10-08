@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us & Our Mission — Savoria Dining Discovery</title>
+  <meta name="description" content="Learn about Savoria's mission to celebrate local dining culture, empower passionate chefs, and guide food lovers to unforgettable restaurant experiences.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  
+  <!-- Bootstrap 5 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- ================================================================
+       HEADER & NAVIGATION
+       ================================================================ -->
+  <header class="crave-header">
+    <div class="container">
+      <nav class="crave-navbar">
+        <!-- Logo -->
+        <a href="index.html" class="brand-logo">
+          <div class="logo-icon">
+            <i class="bi bi-compass-fill"></i>
+          </div>
+          <span>Savor<span class="accent">ia</span></span>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <ul class="crave-nav-links crave-nav-links-desktop">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html" class="active">About Us</a></li>
+          <li><a href="restaurants.html">Restaurants</a></li>
+          <li><a href="food-details.html">Food Details</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+
+        <!-- Right Header Actions -->
+        <div class="header-actions">
+          <button class="cart-icon-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#cartOffcanvas" aria-label="View Tasting Bag">
+            <i class="bi bi-bag-heart-fill"></i>
+            <span class="cart-badge">2</span>
+          </button>
+
+          <a href="restaurants.html" class="btn-crave-primary d-none d-lg-inline-flex">
+            <span>Explore Dining</span>
+            <i class="bi bi-arrow-right-short fs-5"></i>
+          </a>
+
+          <!-- Mobile Hamburger Toggle -->
+          <button class="mobile-toggle-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileNavOffcanvas" aria-label="Toggle Navigation">
+            <i class="bi bi-list"></i>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Offcanvas Drawer -->
+  <div class="offcanvas offcanvas-end mobile-nav-offcanvas" tabindex="-1" id="mobileNavOffcanvas">
+    <div class="offcanvas-header border-bottom">
+      <div class="brand-logo">
+        <div class="logo-icon"><i class="bi bi-compass-fill"></i></div>
+        <span>Savor<span class="accent">ia</span></span>
+      </div>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body d-flex flex-column justify-content-between">
+      <div>
+        <ul class="mobile-nav-list">
+          <li><a href="index.html"><span>Home</span> <i class="bi bi-chevron-right"></i></a></li>
+          <li><a href="about.html" class="active"><span>About Us & Our Mission</span> <i class="bi bi-chevron-right"></i></a></li>
+          <li><a href="restaurants.html"><span>Restaurants</span> <i class="bi bi-chevron-right"></i></a></li>
+          <li><a href="food-details.html"><span>Food Details & Tasting</span> <i class="bi bi-chevron-right"></i></a></li>
+          <li><a href="contact.html"><span>Contact & Concierge Desk</span> <i class="bi bi-chevron-right"></i></a></li>
+        </ul>
+      </div>
+      <div class="pt-3 border-top">
+        <a href="restaurants.html" class="btn-crave-primary w-100 text-center">Discover Restaurants</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide-in Cart / Tasting Offcanvas Drawer -->
+  <div class="offcanvas offcanvas-end cart-offcanvas" tabindex="-1" id="cartOffcanvas">
+    <div class="offcanvas-header border-bottom">
+      <h5 class="offcanvas-title fw-bold"><i class="bi bi-bookmark-star-fill text-warning me-2"></i> Your Tasting Selection</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body d-flex flex-column justify-content-between">
+      <div id="cartItemsContainer"></div>
+      <div class="cart-summary-box">
+        <div class="summary-row">
+          <span class="text-muted">Tasting Subtotal</span>
+          <span class="fw-bold" id="cartSubtotal">₹1,370</span>
+        </div>
+        <div class="summary-row">
+          <span class="text-muted">Table Service & Booking</span>
+          <span class="fw-bold text-success" id="cartDeliveryFee">COMPLIMENTARY</span>
+        </div>
+        <div class="summary-row">
+          <span class="text-muted">Hospitality & Taxes</span>
+          <span class="fw-bold">₹68</span>
+        </div>
+        <div class="summary-row text-success">
+          <span>Epicure Club Voucher (SAVORFIRST)</span>
+          <span class="fw-bold">-₹100</span>
+        </div>
+        <div class="summary-row total">
+          <span>Estimated Total</span>
+          <span style="color:var(--primary);" id="cartTotal">₹1,338</span>
+        </div>
+        <a href="food-details.html" class="btn-crave-primary w-100 mt-3 text-center">
+          <span>Proceed to Experience</span>
+          <i class="bi bi-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================================
+       ABOUT PAGE HERO SECTION
+       ================================================================ -->
+  <section class="hero-wrapper page-hero-wrapper">
+    <div class="container">
+      <div class="row align-items-center">
+        <!-- Left Hero Content -->
+        <div class="col-lg-6 mb-5 mb-lg-0 hero-content-box">
+          <span class="badge-crave mb-3">
+            <i class="bi bi-stars"></i> Our Gastronomy Journey &amp; Passion
+          </span>
+          <h1 class="page-hero-title">Curating Exceptional <br><span style="color:var(--primary);">Dining Stories</span></h1>
+          <p class="hero-subtitle">
+            Savoria was founded with a singular conviction: illuminating authentic local dining destinations, honoring passionate chefs, and guiding food lovers to unforgettable culinary moments.
+          </p>
+
+          <div class="d-flex flex-wrap align-items-center gap-4 mt-4">
+            <div class="d-flex align-items-center gap-2">
+              <div class="rounded-circle p-2 fs-5" style="background:rgba(114, 47, 55, 0.1); color:var(--primary);">
+                <i class="bi bi-shop"></i>
+              </div>
+              <div>
+                <strong class="d-block text-dark">350+ Curated Spots</strong>
+                <span class="small text-muted">Hand-Tested Quality</span>
+              </div>
+            </div>
+
+            <div class="d-flex align-items-center gap-2">
+              <div class="rounded-circle p-2 fs-5" style="background:rgba(197, 160, 89, 0.2); color:var(--accent);">
+                <i class="bi bi-patch-check-fill"></i>
+              </div>
+              <div>
+                <strong class="d-block text-dark">100% Authentic</strong>
+                <span class="small text-muted">Unbiased Gastronomy</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Hero Visual Graphic -->
+        <div class="col-lg-6 hero-visual-container">
+          <div class="hero-main-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?w=800&auto=format&fit=crop&q=80" alt="Savoria Curators in an Ambient Dining Setting" class="hero-main-img">
+          </div>
+
+          <!-- Floating Badges -->
+          <div class="floating-card floating-card-1">
+            <div class="float-icon orange">
+              <i class="bi bi-stars"></i>
+            </div>
+            <div class="float-text">
+              <h5>500,000+</h5>
+              <p>Foodies Guided</p>
+            </div>
+          </div>
+
+          <div class="floating-card floating-card-2">
+            <div class="float-icon green">
+              <i class="bi bi-award-fill"></i>
+            </div>
+            <div class="float-text">
+              <h5>#1 Dining Guide</h5>
+              <p>Top Rated Discovery</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       OUR MISSION & VISION SECTION
+       ================================================================ -->
+  <section class="section-padding bg-white">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6">
+          <div class="position-relative">
+            <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=800&auto=format&fit=crop&q=80" alt="Executive Chef Preparing Tasting Dish" class="img-fluid rounded-4 shadow-lg border">
+            <div class="position-absolute bottom-0 end-0 m-4 bg-white p-3 rounded-3 shadow border max-w-300 d-none d-sm-block">
+              <div class="d-flex align-items-center gap-2">
+                <i class="bi bi-quote fs-1" style="color:var(--primary);"></i>
+                <p class="small text-dark fw-bold mb-0">"Food is not just nourishment; it is a tapestry of local heritage, human craftsmanship, and timeless hospitality."</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <span class="badge-crave mb-2">Empowering Independent Kitchens</span>
+          <h2 class="fw-bold mb-3">Connecting Diners with Culinary Artisans</h2>
+          <p class="text-muted mb-4">
+            Founded in 2024, Savoria started as an independent culinary collective dedicated to bridging the divide between neighborhood family trattorias, hidden street food masters, and eager gastronomic explorers. Today, we curate over 350 premier restaurants, tasting rooms, and artisan bakeries across 15 culinary capitals.
+          </p>
+
+          <div class="row g-3">
+            <div class="col-sm-6">
+              <div class="p-3 border rounded-3 bg-light">
+                <i class="bi bi-bullseye fs-3 mb-2" style="color:var(--primary);"></i>
+                <h5 class="fw-bold fs-6">Our Mission</h5>
+                <p class="small text-muted mb-0">Celebrate culinary artistry and empower neighborhood restaurateurs while helping diners discover unforgettable meals.</p>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="p-3 border rounded-3 bg-light">
+                <i class="bi bi-eye-fill fs-3 mb-2" style="color:var(--secondary);"></i>
+                <h5 class="fw-bold fs-6">Our Vision</h5>
+                <p class="small text-muted mb-0">To become the world's most trusted, authentic, and inspiring local dining discovery ecosystem.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       COMPANY MILESTONES COUNTER
+       ================================================================ -->
+  <section class="section-padding" style="background:var(--bg-warm);">
+    <div class="container">
+      <div class="text-center max-w-700 mx-auto mb-5">
+        <span class="badge-crave mb-2">Our Impact in Numbers</span>
+        <h2>Milestones We Are Proud Of</h2>
+        <p>Growing every single day with the support of our passionate foodie community and restaurant partners.</p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-6 col-md-3">
+          <div class="milestone-box">
+            <div class="milestone-number">500K+</div>
+            <h6 class="fw-bold text-dark mb-1">Diners Guided</h6>
+            <span class="small text-muted">Authentic Discoveries</span>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-3">
+          <div class="milestone-box">
+            <div class="milestone-number">350+</div>
+            <h6 class="fw-bold text-dark mb-1">Curated Dining Spots</h6>
+            <span class="small text-muted">Hand-Tested Menus</span>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-3">
+          <div class="milestone-box">
+            <div class="milestone-number">99.4%</div>
+            <h6 class="fw-bold text-dark mb-1">Review Authenticity</h6>
+            <span class="small text-muted">Zero Sponsored Rankings</span>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-3">
+          <div class="milestone-box">
+            <div class="milestone-number">4.9★</div>
+            <h6 class="fw-bold text-dark mb-1">Gastronomy Rating</h6>
+            <span class="small text-muted">25,000+ Diner Reviews</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       THE 4 PILLARS OF SAVORIA
+       ================================================================ -->
+  <section class="section-padding bg-white">
+    <div class="container">
+      <div class="text-center max-w-700 mx-auto mb-5">
+        <span class="badge-crave mb-2">Why Foodies Trust Us</span>
+        <h2>The 4 Pillars of Savoria</h2>
+        <p>What sets our restaurant discovery platform apart from generic directories.</p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-3">
+          <div class="p-4 rounded-4 border bg-light h-100 text-center">
+            <div class="rounded-circle mx-auto d-flex align-items-center justify-content-center mb-3" style="width:60px; height:60px; background:rgba(114, 47, 55, 0.1); color:var(--primary);">
+              <i class="bi bi-award-fill fs-2"></i>
+            </div>
+            <h5 class="fw-bold">Curated Excellence</h5>
+            <p class="small text-muted mb-0">Every featured dining venue is anonymously visited, tasted, and vetted by culinary curators.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+          <div class="p-4 rounded-4 border bg-light h-100 text-center">
+            <div class="rounded-circle mx-auto d-flex align-items-center justify-content-center mb-3" style="width:60px; height:60px; background:rgba(39, 174, 96, 0.1); color:#27AE60;">
+              <i class="bi bi-shield-check fs-2"></i>
+            </div>
+            <h5 class="fw-bold">Zero-Fake Reviews</h5>
+            <p class="small text-muted mb-0">Strictly verified diner feedback and transparent dish insights with zero paid promotional bias.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+          <div class="p-4 rounded-4 border bg-light h-100 text-center">
+            <div class="rounded-circle mx-auto d-flex align-items-center justify-content-center mb-3" style="width:60px; height:60px; background:rgba(197, 160, 89, 0.2); color:var(--accent);">
+              <i class="bi bi-headset fs-2"></i>
+            </div>
+            <h5 class="fw-bold">Concierge Hospitality</h5>
+            <p class="small text-muted mb-0">Dedicated table assistance for special celebrations, sommelier wine pairing, and private dining.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+          <div class="p-4 rounded-4 border bg-light h-100 text-center">
+            <div class="rounded-circle mx-auto d-flex align-items-center justify-content-center mb-3" style="width:60px; height:60px; background:rgba(200, 90, 50, 0.1); color:var(--secondary);">
+              <i class="bi bi-heart-fill fs-2"></i>
+            </div>
+            <h5 class="fw-bold">Local Heritage Pride</h5>
+            <p class="small text-muted mb-0">Spotlighting multi-generational recipes, indigenous culinary traditions, and sustainable growers.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       LEADERSHIP TEAM SECTION
+       ================================================================ -->
+  <section class="section-padding" style="background:var(--bg-warm);">
+    <div class="container">
+      <div class="text-center max-w-700 mx-auto mb-5">
+        <span class="badge-crave mb-2">Meet Our Visionaries</span>
+        <h2>The Team Behind Savoria</h2>
+        <p>Passionate culinary critics, hospitality directors, and digital curators devoted to elevating your dining discovery.</p>
+      </div>
+
+      <div class="row g-4">
+        <!-- Leader 1 -->
+        <div class="col-sm-6 col-lg-3">
+          <div class="team-card">
+            <div class="team-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&auto=format&fit=crop&q=80" alt="Marcus Vance - Founder & Chief Epicurean" class="team-img">
+            </div>
+            <div class="team-info">
+              <h5 class="fw-bold mb-1">Marcus Vance</h5>
+              <span class="team-role">Founder &amp; Chief Epicurean</span>
+              <p class="small text-muted mb-3">Former culinary critic and journalist dedicated to spotlighting independent restaurants.</p>
+              <div class="d-flex justify-content-center gap-2">
+                <a href="#" class="text-muted"><i class="bi bi-linkedin fs-5"></i></a>
+                <a href="#" class="text-muted"><i class="bi bi-twitter-x fs-5"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Leader 2 -->
+        <div class="col-sm-6 col-lg-3">
+          <div class="team-card">
+            <div class="team-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&auto=format&fit=crop&q=80" alt="Elena Rostova - Head of Culinary Curation" class="team-img">
+            </div>
+            <div class="team-info">
+              <h5 class="fw-bold mb-1">Elena Rostova</h5>
+              <span class="team-role">Head of Culinary Curation</span>
+              <p class="small text-muted mb-3">Master sommelier directing restaurant benchmarking and tasting guide standards.</p>
+              <div class="d-flex justify-content-center gap-2">
+                <a href="#" class="text-muted"><i class="bi bi-linkedin fs-5"></i></a>
+                <a href="#" class="text-muted"><i class="bi bi-instagram fs-5"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Leader 3 -->
+        <div class="col-sm-6 col-lg-3">
+          <div class="team-card">
+            <div class="team-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&auto=format&fit=crop&q=80" alt="Devish Sharma - VP of Discovery Technology" class="team-img">
+            </div>
+            <div class="team-info">
+              <h5 class="fw-bold mb-1">Devish Sharma</h5>
+              <span class="team-role">VP of Discovery Tech</span>
+              <p class="small text-muted mb-3">Architect of Savoria's intelligent neighborhood mapping and palate matching engine.</p>
+              <div class="d-flex justify-content-center gap-2">
+                <a href="#" class="text-muted"><i class="bi bi-linkedin fs-5"></i></a>
+                <a href="#" class="text-muted"><i class="bi bi-github fs-5"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Leader 4 -->
+        <div class="col-sm-6 col-lg-3">
+          <div class="team-card">
+            <div class="team-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&auto=format&fit=crop&q=80" alt="Sarah Miller - Guest Experience Director" class="team-img">
+            </div>
+            <div class="team-info">
+              <h5 class="fw-bold mb-1">Sarah Miller</h5>
+              <span class="team-role">Guest Experience Director</span>
+              <p class="small text-muted mb-3">Overseeing 24/7 dining concierge desk and VIP event reservation hospitality.</p>
+              <div class="d-flex justify-content-center gap-2">
+                <a href="#" class="text-muted"><i class="bi bi-linkedin fs-5"></i></a>
+                <a href="#" class="text-muted"><i class="bi bi-headset fs-5"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       CTA BANNER SECTION
+       ================================================================ -->
+  <section class="section-padding bg-white">
+    <div class="container">
+      <div class="p-4 p-md-5 rounded-4 text-white position-relative overflow-hidden text-center shadow-lg" style="background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);">
+        <span class="badge bg-white mb-3 px-3 py-2 rounded-pill fw-bold" style="color:var(--primary);">JOIN THE GASTRONOMY COMMUNITY</span>
+        <h2 class="text-white fw-bold mb-3 display-6">Ready to Discover 350+ Acclaimed Dining Spots?</h2>
+        <p class="text-white-50 fs-5 mb-4 max-w-700 mx-auto">
+          From candlelit wine bistros and serene sushi counters to vibrant street food markets and artisanal bakeries, Savoria leads you to extraordinary flavors.
+        </p>
+        <div class="d-flex justify-content-center gap-3 flex-wrap">
+          <a href="restaurants.html" class="btn btn-light fw-bold px-4 py-3 rounded-pill fs-6 shadow" style="color:var(--primary);">
+            <span>Browse Dining Spots</span>
+            <i class="bi bi-arrow-right ms-2"></i>
+          </a>
+          <a href="contact.html" class="btn btn-outline-light text-white fw-bold px-4 py-3 rounded-pill fs-6">
+            <span>Contact Concierge</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       FOOTER
+       ================================================================ -->
+  <footer class="crave-footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4 mb-4 mb-lg-0">
+          <a href="index.html" class="brand-logo text-white mb-3 d-inline-flex">
+            <div class="logo-icon"><i class="bi bi-compass-fill"></i></div>
+            <span class="text-white">Savor<span class="accent">ia</span></span>
+          </a>
+          <p class="mb-4">
+            Your Premier Local Dining &amp; Restaurant Discovery Guide. Connecting food enthusiasts with extraordinary culinary artistry, memorable dining spaces, and passionate neighborhood chefs.
+          </p>
+          <div class="social-links">
+            <a href="https://instagram.com" target="_blank" class="social-icon"><i class="bi bi-instagram"></i></a>
+            <a href="https://facebook.com" target="_blank" class="social-icon"><i class="bi bi-facebook"></i></a>
+            <a href="https://twitter.com" target="_blank" class="social-icon"><i class="bi bi-twitter-x"></i></a>
+            <a href="https://youtube.com" target="_blank" class="social-icon"><i class="bi bi-youtube"></i></a>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-3 col-lg-2">
+          <h5>Navigation</h5>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="restaurants.html">Restaurants</a></li>
+            <li><a href="food-details.html">Food Details</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-md-3 col-lg-3">
+          <h5>Dining Concierge</h5>
+          <ul class="footer-links">
+            <li><a href="contact.html#ticketSection">Submit Inquiry</a></li>
+            <li><a href="contact.html#activeTicketSection">Inquiry Tracker</a></li>
+            <li><a href="contact.html#contactMapSection">Concierge HQ</a></li>
+            <li><a href="contact.html#faqSection">Gastronomy FAQs</a></li>
+          </ul>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+          <h5>Epicurean Gazette</h5>
+          <p class="small">Subscribe for secret supper club invitations &amp; chef release guides.</p>
+          <form class="footer-newsletter newsletter-form">
+            <input type="email" placeholder="Enter your email" required>
+            <button type="submit" class="btn btn-crave-primary"><i class="bi bi-send-fill"></i></button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="mb-0">&copy; 2026 Savoria Epicurean Network Inc. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button type="button" id="backToTopBtn" class="back-to-top-btn" aria-label="Back to Top">
+    <i class="bi bi-arrow-up"></i>
+  </button>
+
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JS -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
