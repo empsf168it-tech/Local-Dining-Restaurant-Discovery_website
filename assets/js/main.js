@@ -411,6 +411,44 @@ function initFormsAndToasts() {
     });
   });
 
+  // Contact Page Search Bar
+  const contactSearchBtn = document.getElementById('contactSearchBtn');
+  const contactSearchInput = document.getElementById('contactSearchInput');
+
+  function handleContactSearch() {
+    const query = contactSearchInput ? contactSearchInput.value.trim().toLowerCase() : '';
+    if (!query) {
+      showToast('Please enter a topic, inquiry code, or FAQ keyword');
+      return;
+    }
+
+    if (query.includes('sav') || query.includes('ticket') || query.includes('track') || query.includes('inquiry')) {
+      const ticketSec = document.getElementById('activeTicketSection') || document.getElementById('ticketSection');
+      if (ticketSec) {
+        ticketSec.scrollIntoView({ behavior: 'smooth' });
+        showToast(`Locating reservation / ticket thread for "${query}"...`);
+      }
+    } else {
+      const faqSec = document.getElementById('faqSection');
+      if (faqSec) {
+        faqSec.scrollIntoView({ behavior: 'smooth' });
+        showToast(`Filtering dining guidance for "${query}"...`);
+      }
+    }
+  }
+
+  if (contactSearchBtn) {
+    contactSearchBtn.addEventListener('click', handleContactSearch);
+  }
+  if (contactSearchInput) {
+    contactSearchInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        handleContactSearch();
+      }
+    });
+  }
+
   // Ticket Submission Form
   const contactForm = document.getElementById('contactHelpForm');
   if (contactForm) {

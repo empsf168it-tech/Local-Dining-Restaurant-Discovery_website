@@ -141,10 +141,12 @@
           </p>
 
           <!-- Interactive Search Bar -->
-          <div class="hero-search-container mt-4" style="max-width: 100%;">
-            <i class="bi bi-search fs-5 ms-2" style="color:var(--primary);"></i>
-            <input type="text" class="hero-search-input" placeholder="Search dining articles, reservation codes, or dining FAQs...">
-            <button class="btn btn-crave-primary rounded-pill px-4 me-1 d-none d-sm-inline-flex">Search</button>
+          <div class="hero-search-container contact-search-bar mt-4" style="max-width: 100%;">
+            <i class="bi bi-search fs-5 ms-2 flex-shrink-0" style="color:var(--primary);"></i>
+            <input type="text" class="hero-search-input" id="contactSearchInput" placeholder="Search dining articles, reservation codes, or dining FAQs...">
+            <button type="button" class="btn btn-crave-primary rounded-pill search-btn" id="contactSearchBtn">
+              <span>Search</span>
+            </button>
           </div>
 
           <!-- Quick Navigation Chips -->

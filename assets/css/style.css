@@ -513,6 +513,53 @@ img {
   white-space: nowrap;
 }
 
+/* Contact Page Specific Search Bar */
+.contact-search-bar {
+  flex-direction: row !important;
+  align-items: center !important;
+  border-radius: var(--radius-pill) !important;
+  padding: 0.35rem 0.4rem 0.35rem 0.75rem !important;
+  background: var(--white);
+  box-shadow: var(--shadow-sm);
+  display: flex !important;
+}
+
+.contact-search-bar .hero-search-input {
+  min-width: 0;
+  flex: 1;
+  padding: 0.5rem 0.6rem;
+  font-size: 0.95rem;
+}
+
+.contact-search-bar .search-btn {
+  white-space: nowrap;
+  padding: 0.6rem 1.4rem;
+  font-size: 0.92rem;
+  flex-shrink: 0;
+  border-radius: var(--radius-pill);
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 576px) {
+  .contact-search-bar {
+    padding: 0.3rem 0.35rem 0.3rem 0.65rem !important;
+    gap: 0.25rem;
+  }
+  .contact-search-bar .hero-search-input {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.35rem;
+  }
+  .contact-search-bar .hero-search-input::placeholder {
+    font-size: 0.8rem;
+  }
+  .contact-search-bar .search-btn {
+    padding: 0.5rem 0.95rem;
+    font-size: 0.82rem;
+  }
+}
+
 /* Hero Right Visual & Floating Cards */
 .hero-visual-container {
   position: relative;
@@ -1158,6 +1205,29 @@ img {
   margin-top: 3rem;
 }
 
+@media (max-width: 991px) {
+  .tracking-card {
+    padding: 1.75rem 1.25rem;
+    margin-top: 2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .tracking-card {
+    padding: 1.25rem 0.85rem;
+    margin-top: 1.5rem;
+  }
+}
+
+.tracker-host-box {
+  border: 1px solid var(--border-light);
+  transition: var(--transition-normal);
+}
+
+.tracker-action-buttons .btn {
+  flex: 1 1 auto;
+}
+
 .tracking-timeline {
   display: flex;
   justify-content: space-between;
@@ -1672,16 +1742,28 @@ img {
 .social-brand-card.whatsapp:hover .social-brand-icon { background: #25D366; }
 
 /* ================================================================
-   ABOUT PAGE — TEAM & MILESTONES
+   ABOUT PAGE — MISSION & VISION, TEAM & MILESTONES
    ================================================================ */
+.mission-vision-card {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
 .milestone-box {
   background: var(--white);
   border-radius: var(--radius-lg);
-  padding: 2rem 1.5rem;
+  padding: 1.6rem 1rem;
   border: 1px solid var(--border-light);
   box-shadow: var(--shadow-sm);
   text-align: center;
   transition: var(--transition-normal);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .milestone-box:hover {
@@ -1691,13 +1773,70 @@ img {
 }
 
 .milestone-number {
-  font-size: 2.8rem;
+  font-size: clamp(2rem, 2.5vw, 2.75rem);
   font-weight: 800;
   color: var(--primary);
-  line-height: 1;
-  margin-bottom: 0.5rem;
+  line-height: 1.1;
+  margin-bottom: 0.4rem;
   font-family: var(--font-heading);
+  white-space: nowrap;
 }
+
+.milestone-title {
+  font-size: clamp(0.85rem, 1.1vw, 1rem);
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 0.25rem;
+  line-height: 1.25;
+}
+
+.milestone-desc {
+  font-size: clamp(0.72rem, 0.9vw, 0.85rem);
+  color: var(--text-muted);
+  line-height: 1.3;
+  display: block;
+}
+
+/* Specific optimizations for tablet / 1024px screens */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .milestone-box {
+    padding: 1.4rem 0.5rem;
+  }
+  .milestone-number {
+    font-size: 2.1rem;
+    margin-bottom: 0.3rem;
+  }
+  .milestone-title {
+    font-size: 0.84rem;
+    white-space: nowrap;
+  }
+  .milestone-desc {
+    font-size: 0.72rem;
+    white-space: nowrap;
+  }
+}
+
+/* Specific optimizations for mobile screens */
+@media (max-width: 576px) {
+  .milestone-box {
+    padding: 1.2rem 0.4rem;
+    border-radius: var(--radius-md);
+  }
+  .milestone-number {
+    font-size: 1.85rem;
+    margin-bottom: 0.25rem;
+  }
+  .milestone-title {
+    font-size: 0.8rem;
+    line-height: 1.2;
+    margin-bottom: 0.2rem;
+  }
+  .milestone-desc {
+    font-size: 0.68rem;
+    line-height: 1.2;
+  }
+}
+
 
 .team-card {
   background: var(--white);
@@ -1706,6 +1845,9 @@ img {
   border: 1px solid var(--border-light);
   box-shadow: var(--shadow-sm);
   transition: var(--transition-normal);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .team-card:hover {
@@ -1717,6 +1859,7 @@ img {
   position: relative;
   height: 280px;
   overflow: hidden;
+  flex-shrink: 0;
 }
 
 .team-img {
@@ -1733,6 +1876,9 @@ img {
 .team-info {
   padding: 1.5rem;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
 .team-role {
@@ -1742,3 +1888,75 @@ img {
   margin-bottom: 0.5rem;
   display: block;
 }
+
+.team-bio {
+  flex-grow: 1;
+  margin-bottom: 1.25rem;
+  line-height: 1.55;
+}
+
+.team-social-links {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding-top: 0.5rem;
+}
+
+.team-social-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--bg-warm);
+  border: 1px solid var(--border-light);
+  color: var(--text-muted);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  line-height: 1;
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+.team-social-btn i {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.team-social-btn:hover {
+  background: var(--primary);
+  color: var(--white);
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(114, 47, 55, 0.25);
+}
+
+/* ================================================================
+   ABOUT PAGE & GLOBAL CTA BANNER BUTTONS
+   ================================================================ */
+.cta-banner-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.6rem !important;
+  line-height: 1.4 !important;
+  transition: var(--transition-normal);
+}
+
+.cta-banner-btn i {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  line-height: 1;
+  transition: transform var(--transition-fast);
+}
+
+.cta-banner-btn:hover i.bi-arrow-right {
+  transform: translateX(4px);
+}
+
